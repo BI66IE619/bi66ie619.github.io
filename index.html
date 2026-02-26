@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BI6VAULT // ARCHITECT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --cyan: #00f2ff; --deep: #050505; }
+        body { 
+            background-color: var(--deep); color: white; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            overflow-x: hidden; user-select: none; -webkit-user-select: none;
+        }
+        .font-sync { font-family: 'Syncopate', sans-serif; }
+        
+        .bg-mesh { 
+            position: fixed; inset: 0; 
+            background: radial-gradient(circle at 50% 50%, #0c1e2e 0%, #050505 100%); 
+            z-index: -1; 
+        }
+
+        .bento-card { 
+            background: rgba(255, 255, 255, 0.01); backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+            width: 100%;
+        }
+        .project-row:hover .bento-card { 
+            border-color: var(--cyan); background: rgba(0, 242, 255, 0.04);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .skill-track { background: rgba(255,255,255,0.05); height: 4px; border-radius: 2px; overflow: hidden; }
+        .skill-fill { background: var(--cyan); height: 100%; box-shadow: 0 0 10px var(--cyan); }
+
+        /* Terminal Styling */
+        .term-input {
+            background: transparent; border: none; outline: none;
+            color: var(--cyan); font-family: monospace; width: 100%;
+            font-size: 14px;
+        }
+        .term-prompt { color: #444; margin-right: 10px; font-family: monospace; font-size: 14px; white-space: nowrap; }
+
+        /* Tactical Send Button */
+        .send-btn {
+            background: var(--cyan); color: var(--deep);
+            font-family: 'Syncopate', sans-serif; font-size: 10px; font-weight: 900;
+            padding: 8px 16px; border-radius: 4px; transition: all 0.3s;
+            letter-spacing: 1px; flex-shrink: 0;
+        }
+        .send-btn:hover { background: white; box-shadow: 0 0 20px var(--cyan); transform: translateY(-1px); }
+        .send-btn:active { transform: translateY(1px); }
+
+        .info-circle {
+            width: 40px; height: 40px; border: 2px solid var(--cyan);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-family: monospace; font-size: 22px; font-weight: 900;
+            color: var(--cyan); cursor: help; position: relative; 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(0, 242, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 242, 255, 0); }
+        }
+        .info-circle:hover { background: var(--cyan); color: var(--deep); box-shadow: 0 0 25px var(--cyan); transform: scale(1.1); }
+        
+        .tooltip {
+            position: absolute; bottom: 55px; left: 50%; transform: translateX(-50%);
+            background: #000; border: 1px solid var(--cyan); color: var(--cyan);
+            padding: 16px; font-size: 12px; border-radius: 8px; width: 280px;
+            pointer-events: none; opacity: 0; transition: all 0.3s ease;
+            text-transform: uppercase; letter-spacing: 1px; line-height: 1.5;
+            z-index: 50; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .info-circle:hover .tooltip { opacity: 1; bottom: 60px; }
+
+        .copy-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 6px 12px; border-radius: 4px; font-size: 10px;
+            color: #888; transition: all 0.3s; font-family: monospace;
+        }
+        .copy-btn:hover { background: var(--cyan); color: var(--deep); border-color: var(--cyan); }
+
+        #loader {
+            position: fixed; inset: 0; background: var(--deep);
+            z-index: 100; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; font-family: monospace;
+        }
+
+        .origin-sidebar { border-right: 1px solid rgba(255, 255, 255, 0.08); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: #1a1a1a; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="loader">
+        <div class="text-cyan-500 mb-2 font-bold tracking-[0.5em] uppercase animate-pulse">Initializing_BI6VAULT_OS...</div>
+        <div class="text-[10px] text-gray-600">ENCRYPTED_UPLINK // ACTIVE</div>
+    </div>
+
+    <div class="bg-mesh"></div>
+
+    <nav class="p-8 flex justify-between items-center fixed top-0 w-full z-50 backdrop-blur-sm">
+        <div class="font-sync text-lg tracking-tighter text-cyan-400">BI6VAULT_V9</div>
+        <div class="font-mono text-[9px] text-gray-600 tracking-[0.4em] uppercase">National City // 2026</div>
+    </nav>
+
+    <main class="pt-40 px-6 md:px-12 lg:px-24 max-w-[1700px] mx-auto pb-40">
+        
+        <header class="mb-32" data-aos="fade-up">
+            <h1 class="font-sync text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight tracking-tighter uppercase">BI6<br> <span class="text-cyan-500">VAULT.</span></h1>
+            <div class="flex flex-col md:flex-row gap-10 items-start">
+                <p class="max-w-xl text-gray-500 font-mono text-[10px] uppercase tracking-[0.3em] leading-relaxed">
+                    Digital Architect & Infrastructure Rebel. <br> Full-Stack Evolution // Master of HTML, CSS, JS, and React.
+                </p>
+                <div class="px-4 py-2 border border-white/5 bg-white/5 rounded text-[10px] font-mono text-cyan-500 tracking-widest uppercase">Identity: BIGGIE</div>
+            </div>
+        </header>
+
+        <section class="mb-32 grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
+            <div class="bento-card rounded-[1.5rem] p-10">
+                <h2 class="font-sync text-sm text-cyan-500 mb-6 uppercase tracking-widest">// ARCHIVE_LOG</h2>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    I build gateways. Based in National City, I dissect systems to make them better for everyone. I believe in software as a tool for equity—bypassing paywalls for education and automating funding discovery.
+                </p>
+            </div>
+            <div class="bento-card rounded-[1.5rem] p-10">
+                <h2 class="font-sync text-sm text-cyan-500 mb-6 uppercase tracking-widest">// CORE_VALUES</h2>
+                <p class="text-gray-400 text-sm leading-relaxed italic">
+                    "My journey started with a school firewall I wasn't supposed to cross. Manipulating code is a superpower, and I'm using mine to build tools that matter."
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-32" data-aos="fade-up">
+            <h2 class="font-sync text-sm text-cyan-500 mb-10 uppercase tracking-[0.5em]">SYSTEM_CAPABILITIES</h2>
+            <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+        <section class="mb-32">
+            <h2 class="font-sync text-sm text-cyan-500 mb-10 uppercase tracking-[0.5em]">DEPLOYED_PROJECTS</h2>
+            <div id="project-grid" class="flex flex-col w-full gap-4"></div>
+        </section>
+
+        <section class="mb-20" data-aos="fade-up">
+            <div class="flex justify-between items-end mb-10">
+                <h2 class="font-sync text-sm text-cyan-500 uppercase tracking-[0.5em]">SEND A MESSAGE</h2>
+                <div class="flex items-center gap-6">
+                    <span class="font-mono text-[9px] text-gray-600 uppercase animate-pulse">Awaiting Input...</span>
+                    <div class="info-circle">!
+                        <div class="tooltip">
+                            <span class="block border-b border-cyan-900 mb-2 pb-1 text-white font-bold">Contact Instructions:</span>
+                            Type your message below and click <b>SEND</b> or press <b>Enter</b>. <br><br>
+                            It will automatically open a new email draft to me with your message ready to go.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bento-card rounded-2xl p-8 md:p-12">
+                <div class="flex flex-col space-y-6">
+                    <div class="flex items-center gap-4">
+                        <span class="term-prompt">BI6VAULT@guest:~$</span>
+                        <input type="text" id="terminal-input" class="term-input" placeholder="Type here..." autocomplete="off" spellcheck="false">
+                        <button onclick="transmitSignal()" class="send-btn">SEND</button>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                        <div class="flex items-center gap-4">
+                            <span class="font-mono text-[9px] uppercase tracking-widest text-gray-500">To: andersonbiggie2011@gmail.com</span>
+                            <button onclick="copyEmail()" class="copy-btn">COPY EMAIL</button>
+                        </div>
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-cyan-500">Ready for Transmission</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        const mySkills = [
+            { name: "HTML", percent: 100 }, { name: "CSS", percent: 95 },
+            { name: "JavaScript", percent: 88 }, { name: "React", percent: 82 }
+        ];
+
+        const myProjects = [
+            {
+                title: "EduFree Connect",
+                origin: "Engineered to dismantle the paywall culture. Providing high-speed access to premium study resources.",
+                category: "SOCIAL_INFRA",
+                tags: ["React", "Bypass"],
+                image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80"
+            },
+            {
+                title: "PrepPath AI",
+                origin: "Automated intelligence layer for scholarship discovery. Scrapes local and unindexed grants.",
+                category: "AUTOMATION",
+                tags: ["Python", "ML"],
+                image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=80"
+            },
+            {
+                title: "Shadow Games",
+                origin: "Legacy project. High-performance gaming engine optimized for stealth behind school firewalls.",
+                category: "LEGACY_EXPLOIT",
+                tags: ["JS", "Stealth"],
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=400&q=80"
+            }
+        ];
+
+        function render() {
+            document.getElementById('skills-grid').innerHTML = mySkills.map(s => `
+                <div class="bento-card rounded-xl p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-mono text-[9px] uppercase tracking-widest text-gray-500">${s.name}</span>
+                        <span class="font-mono text-[9px] text-cyan-500">${s.percent}%</span>
+                    </div>
+                    <div class="skill-track"><div class="skill-fill" style="width: ${s.percent}%"></div></div>
+                </div>
+            `).join('');
+
+            document.getElementById('project-grid').innerHTML = myProjects.map(p => `
+                <div class="project-row group">
+                    <div class="bento-card rounded-[1.5rem] p-8 lg:px-12 lg:py-8 mb-4 flex flex-col md:flex-row items-center justify-between opacity-80 group-hover:opacity-100 transition-all">
+                        <div class="origin-sidebar md:w-[30%] mb-6 md:mb-0 pr-10 mr-10">
+                            <div class="text-[8px] font-mono text-cyan-500 mb-4 tracking-[0.4em] uppercase opacity-60 font-bold">Origin_Log</div>
+                            <p class="text-gray-500 text-[11px] italic leading-relaxed font-light">"${p.origin}"</p>
+                        </div>
+                        <div class="flex-1 flex flex-col md:flex-row justify-between items-center gap-8">
+                            <div class="flex-1">
+                                <span class="text-[8px] text-gray-500 bg-white/5 px-3 py-1 rounded uppercase mb-4 inline-block font-mono border border-white/5 tracking-[0.2em]">${p.category}</span>
+                                <h3 class="font-sync text-2xl md:text-3xl mb-4 tracking-tighter uppercase leading-none">${p.title}</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    ${p.tags.map(t => `<span class="text-[8px] border border-gray-800 px-4 py-1.5 rounded-full text-gray-600 font-bold tracking-[0.1em] uppercase">${t}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div class="shrink-0"><img src="${p.image}" class="w-24 h-24 md:w-32 rounded-[1.2rem] grayscale group-hover:grayscale-0 transition-all duration-1000 object-cover opacity-80 shadow-2xl"></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText("andersonbiggie2011@gmail.com");
+            const btn = document.querySelector('.copy-btn');
+            btn.innerText = "COPIED!";
+            setTimeout(() => { btn.innerText = "COPY EMAIL"; }, 2000);
+        }
+
+        // --- UNIFIED TRANSMIT LOGIC ---
+        const terminalInput = document.getElementById('terminal-input');
+
+        function transmitSignal() {
+            const msg = terminalInput.value.trim();
+            if (msg.length > 0) {
+                const randomID = Math.floor(10000 + Math.random() * 90000);
+                const email = "andersonbiggie2011@gmail.com";
+                const subject = encodeURIComponent(`Organization Name: #${randomID}`);
+                const body = encodeURIComponent(msg);
+                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+                
+                terminalInput.value = "UPLINKING...";
+                terminalInput.disabled = true;
+
+                // Hidden link click for new tab effect
+                const tempLink = document.createElement('a');
+                tempLink.href = mailtoLink;
+                tempLink.target = "_blank"; // Forces new tab/window
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                
+                setTimeout(() => {
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+                    terminalInput.value = ""; 
+                    terminalInput.disabled = false;
+                    terminalInput.placeholder = "Transmission Sent. Standing by...";
+                    terminalInput.focus();
+                }, 600);
+            }
+        }
+
+        terminalInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') transmitSignal(); });
+
+        window.onload = () => {
+            render();
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                    AOS.init({ duration: 1000, once: true });
+                }, 500);
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
