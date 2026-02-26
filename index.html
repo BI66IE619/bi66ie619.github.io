@@ -37,7 +37,6 @@
         .skill-track { background: rgba(255,255,255,0.05); height: 4px; border-radius: 2px; overflow: hidden; }
         .skill-fill { background: var(--cyan); height: 100%; box-shadow: 0 0 10px var(--cyan); }
 
-        /* Terminal Styling */
         .term-input {
             background: transparent; border: none; outline: none;
             color: var(--cyan); font-family: monospace; width: 100%;
@@ -45,15 +44,13 @@
         }
         .term-prompt { color: #444; margin-right: 10px; font-family: monospace; font-size: 14px; white-space: nowrap; }
 
-        /* Tactical Send Button */
         .send-btn {
             background: var(--cyan); color: var(--deep);
             font-family: 'Syncopate', sans-serif; font-size: 10px; font-weight: 900;
             padding: 8px 16px; border-radius: 4px; transition: all 0.3s;
-            letter-spacing: 1px; flex-shrink: 0;
+            letter-spacing: 1px; flex-shrink: 0; cursor: pointer;
         }
         .send-btn:hover { background: white; box-shadow: 0 0 20px var(--cyan); transform: translateY(-1px); }
-        .send-btn:active { transform: translateY(1px); }
 
         .info-circle {
             width: 40px; height: 40px; border: 2px solid var(--cyan);
@@ -94,7 +91,6 @@
             align-items: center; justify-content: center; font-family: monospace;
         }
 
-        .origin-sidebar { border-right: 1px solid rgba(255, 255, 255, 0.08); }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-thumb { background: #1a1a1a; }
     </style>
@@ -103,18 +99,17 @@
 
     <div id="loader">
         <div class="text-cyan-500 mb-2 font-bold tracking-[0.5em] uppercase animate-pulse">Initializing_BI6VAULT_OS...</div>
-        <div class="text-[10px] text-gray-600">ENCRYPTED_UPLINK // ACTIVE</div>
+        <div class="text-[10px] text-gray-600">SYSTEM_STABLE // 2026</div>
     </div>
 
     <div class="bg-mesh"></div>
 
     <nav class="p-8 flex justify-between items-center fixed top-0 w-full z-50 backdrop-blur-sm">
         <div class="font-sync text-lg tracking-tighter text-cyan-400">BI6VAULT_V9</div>
-        <div class="font-mono text-[9px] text-gray-600 tracking-[0.4em] uppercase">National City // 2026</div>
+        <div class="font-mono text-[9px] text-gray-600 tracking-[0.4em] uppercase">National City // CA</div>
     </nav>
 
     <main class="pt-40 px-6 md:px-12 lg:px-24 max-w-[1700px] mx-auto pb-40">
-        
         <header class="mb-32" data-aos="fade-up">
             <h1 class="font-sync text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight tracking-tighter uppercase">BI6<br> <span class="text-cyan-500">VAULT.</span></h1>
             <div class="flex flex-col md:flex-row gap-10 items-start">
@@ -159,7 +154,7 @@
                         <div class="tooltip">
                             <span class="block border-b border-cyan-900 mb-2 pb-1 text-white font-bold">Contact Instructions:</span>
                             Type your message below and click <b>SEND</b> or press <b>Enter</b>. <br><br>
-                            It will automatically open a new email draft to me with your message ready to go.
+                            This will open your email app with the message ready to send.
                         </div>
                     </div>
                 </div>
@@ -182,8 +177,9 @@
                 </div>
             </div>
         </section>
-
     </main>
+
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -231,16 +227,12 @@
                 <div class="project-row group">
                     <div class="bento-card rounded-[1.5rem] p-8 lg:px-12 lg:py-8 mb-4 flex flex-col md:flex-row items-center justify-between opacity-80 group-hover:opacity-100 transition-all">
                         <div class="origin-sidebar md:w-[30%] mb-6 md:mb-0 pr-10 mr-10">
-                            <div class="text-[8px] font-mono text-cyan-500 mb-4 tracking-[0.4em] uppercase opacity-60 font-bold">Origin_Log</div>
                             <p class="text-gray-500 text-[11px] italic leading-relaxed font-light">"${p.origin}"</p>
                         </div>
                         <div class="flex-1 flex flex-col md:flex-row justify-between items-center gap-8">
                             <div class="flex-1">
                                 <span class="text-[8px] text-gray-500 bg-white/5 px-3 py-1 rounded uppercase mb-4 inline-block font-mono border border-white/5 tracking-[0.2em]">${p.category}</span>
                                 <h3 class="font-sync text-2xl md:text-3xl mb-4 tracking-tighter uppercase leading-none">${p.title}</h3>
-                                <div class="flex flex-wrap gap-2">
-                                    ${p.tags.map(t => `<span class="text-[8px] border border-gray-800 px-4 py-1.5 rounded-full text-gray-600 font-bold tracking-[0.1em] uppercase">${t}</span>`).join('')}
-                                </div>
                             </div>
                             <div class="shrink-0"><img src="${p.image}" class="w-24 h-24 md:w-32 rounded-[1.2rem] grayscale group-hover:grayscale-0 transition-all duration-1000 object-cover opacity-80 shadow-2xl"></div>
                         </div>
@@ -256,7 +248,6 @@
             setTimeout(() => { btn.innerText = "COPY EMAIL"; }, 2000);
         }
 
-        // --- UNIFIED TRANSMIT LOGIC ---
         const terminalInput = document.getElementById('terminal-input');
 
         function transmitSignal() {
@@ -271,11 +262,11 @@
                 terminalInput.value = "UPLINKING...";
                 terminalInput.disabled = true;
 
-                // Hidden link click for new tab effect
+                // Fix: Open the mailto link in the same window context, 
+                // but use a hidden anchor to ensure browser compatibility.
                 const tempLink = document.createElement('a');
                 tempLink.href = mailtoLink;
-                tempLink.target = "_blank"; // Forces new tab/window
-                tempLink.style.display = 'none';
+                // DO NOT use _blank, it causes the about:blank issue.
                 document.body.appendChild(tempLink);
                 
                 setTimeout(() => {
@@ -284,7 +275,6 @@
                     terminalInput.value = ""; 
                     terminalInput.disabled = false;
                     terminalInput.placeholder = "Transmission Sent. Standing by...";
-                    terminalInput.focus();
                 }, 600);
             }
         }
