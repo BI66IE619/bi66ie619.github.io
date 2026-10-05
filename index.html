@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030712">
+
+    <!-- ================= PRIMARY SEO ================= -->
+    <title>Biggie | Full-Stack Digital Architect &amp; Developer Portfolio</title>
+    <meta name="description" content="Biggie is a full-stack digital architect and developer from National City, CA building fast, futuristic web experiences and software. Explore the project archive, tech stack, and service plans for web development, software engineering, and digital solutions.">
+    <meta name="keywords" content="Biggie, BI6DIGITAL, full-stack developer, web development, software engineering, front-end developer, React developer, JavaScript, HTML, CSS, digital architect, National City, San Diego, portfolio, cyberpunk developer, unblocked tools">
+    <meta name="author" content="Biggie">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://bi6digital.com/">
+
+    <!-- ================= OPEN GRAPH ================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BI6DIGITAL">
+    <meta property="og:title" content="Biggie | Full-Stack Digital Architect & Developer Portfolio">
+    <meta property="og:description" content="Full-stack digital architect & infrastructure rebel. Master of HTML, CSS, JS, and React. Explore the project archive and service plans.">
+    <meta property="og:url" content="https://bi6digital.com/">
+    <meta property="og:image" content="https://bi6digital.com/assets/logo.png">
+    <meta property="og:image:alt" content="BI6DIGITAL futuristic developer logo">
+    <meta property="og:locale" content="en_US">
+
+    <!-- ================= TWITTER CARD ================= -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Biggie | Full-Stack Digital Architect & Developer Portfolio">
+    <meta name="twitter:description" content="Full-stack digital architect & infrastructure rebel. Master of HTML, CSS, JS, and React.">
+    <meta name="twitter:image" content="https://bi6digital.com/assets/logo.png">
+    <meta name="twitter:image:alt" content="BI6DIGITAL futuristic developer logo">
+
+    <!-- ================= STRUCTURED DATA (JSON-LD) ================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Biggie",
+      "alternateName": "BI6DIGITAL",
+      "jobTitle": "Full-Stack Digital Architect & Software Engineer",
+      "description": "Full-stack digital architect and infrastructure rebel building fast, futuristic web experiences and software.",
+      "url": "https://bi6digital.com/",
+      "image": "https://bi6digital.com/assets/logo.png",
+      "email": "mailto:andersonbiggie2011@gmail.com",
+      "telephone": "+1-619-806-3504",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "National City",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "Web Development", "Software Engineering", "Cybersecurity", "Linux"],
+      "knowsLanguage": ["en"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "BI6DIGITAL"
+      },
+      "sameAs": [
+        "https://github.com/BI66IE619"
+      ]
+    }
+    </script>
+
+    <!-- ================= TAILWIND + AOS + FONTS ================= -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#030712',
+                        cyanx: '#00f2ff',
+                        violetx: '#7c3aed'
+                    },
+                    fontFamily: {
+                        sync: ['Syncopate', 'sans-serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Fallback helpers defined early so inline onerror works for images parsed above the main script -->
+    <script>
+        function svgPlaceholder(label, w, h) {
+            const safe = String(label || "BI6").replace(/[<>&"]/g, "");
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+                <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#071018"/><stop offset="1" stop-color="#0b1a2b"/></linearGradient></defs>
+                <rect width="${w}" height="${h}" fill="url(#g)"/>
+                <g stroke="#00f2ff" stroke-opacity="0.12">
+                    <path d="M0 ${h/2}H${w}M${w/2} 0V${h}"/>
+                    <rect x="20" y="20" width="${w-40}" height="${h-40}" fill="none"/>
+                </g>
+                <text x="50%" y="52%" fill="#00f2ff" font-family="monospace" font-size="${Math.round(w/18)}" text-anchor="middle" letter-spacing="3">${safe}</text>
+                <text x="50%" y="62%" fill="#334155" font-family="monospace" font-size="${Math.round(w/38)}" text-anchor="middle" letter-spacing="2">NODE_OFFLINE</text>
+            </svg>`;
+            return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+        }
+        window.logoFallback = (el) => { el.onerror = null; el.src = svgPlaceholder("BI6DIGITAL", 800, 240); };
+        window.planFallback = (el) => {
+            el.onerror = null;
+            el.style.display = "none";
+            const box = document.getElementById("pricing-soon");
+            if (box) box.classList.remove("hidden");
+        };
+        window.projectImgFallback = (el) => {
+            el.onerror = null;
+            el.src = svgPlaceholder(el.getAttribute("data-title") || "BI6", 640, 400);
+        };
+    </script>
+
+    <style>
+        :root { --cyan: #00f2ff; --violet: #7c3aed; --deep: #030712; }
+
+        * { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--deep);
+            color: #e5e7eb;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .font-sync { font-family: 'Syncopate', sans-serif; }
+
+        /* ---------- BACKGROUND LAYERS ---------- */
+        .bg-mesh {
+            position: fixed; inset: 0; z-index: -3;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(124,58,237,0.18) 0%, transparent 45%),
+                radial-gradient(circle at 80% 90%, rgba(0,242,255,0.14) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, #071018 0%, #030712 100%);
+        }
+        .bg-grid {
+            position: fixed; inset: -2px; z-index: -2; opacity: 0.35;
+            background-image:
+                linear-gradient(rgba(0,242,255,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,242,255,0.07) 1px, transparent 1px);
+            background-size: 55px 55px;
+            -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 25%, transparent 75%);
+            mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 25%, transparent 75%);
+            animation: gridpan 40s linear infinite;
+        }
+        @keyframes gridpan { from { background-position: 0 0; } to { background-position: 55px 55px; } }
+
+        .scanlines {
+            position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.35;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
+            mix-blend-mode: overlay;
+        }
+        .scanbeam {
+            position: fixed; left: 0; right: 0; height: 140px; z-index: 9997; pointer-events: none;
+            background: linear-gradient(180deg, transparent, rgba(0,242,255,0.06), transparent);
+            animation: scan 9s linear infinite;
+        }
+        @keyframes scan { 0% { top: -20%; } 100% { top: 120%; } }
+
+        /* ---------- RADAR ---------- */
+        .radar {
+            position: fixed; right: -180px; top: 12%; width: 520px; height: 520px; z-index: -1;
+            border-radius: 50%; opacity: 0.25; pointer-events: none;
+            border: 1px solid rgba(0,242,255,0.15);
+        }
+        .radar::before {
+            content: ""; position: absolute; inset: 0; border-radius: 50%;
+            background: conic-gradient(from 0deg, rgba(0,242,255,0.35), transparent 45%);
+            animation: spin 6s linear infinite;
+        }
+        .radar::after {
+            content: ""; position: absolute; inset: 25%; border-radius: 50%;
+            border: 1px solid rgba(0,242,255,0.12);
+            box-shadow: 0 0 0 80px rgba(0,242,255,0.03);
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ---------- GLASS / BENTO ---------- */
+        .bento-card {
+            background: rgba(255,255,255,0.02);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-card::after {
+            content: ""; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgba(0,242,255,0.08), transparent 60%);
+            opacity: 0; transition: opacity 0.5s;
+        }
+        .bento-card:hover::after { opacity: 1; }
+        .bento-card:hover {
+            border-color: rgba(0,242,255,0.5);
+            background: rgba(0,242,255,0.03);
+            box-shadow: 0 0 30px rgba(0,242,255,0.15), 0 24px 50px rgba(0,0,0,0.6);
+            transform: translateY(-4px);
+        }
+
+        .glass-tag {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .corner-bracket { position: relative; }
+        .corner-bracket::before, .corner-bracket::after {
+            content: ""; position: absolute; width: 14px; height: 14px; pointer-events: none;
+            border-color: var(--cyan); opacity: 0.6;
+        }
+        .corner-bracket::before { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+        .corner-bracket::after { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+
+        /* ---------- SKILLS ---------- */
+        .skill-track {
+            background: rgba(255,255,255,0.05); height: 5px; border-radius: 999px; overflow: hidden;
+            position: relative;
+        }
+        .skill-fill {
+            background: linear-gradient(90deg, var(--violet), var(--cyan));
+            height: 100%; width: 0; border-radius: 999px;
+            box-shadow: 0 0 12px rgba(0,242,255,0.8);
+            transition: width 1.6s cubic-bezier(0.16,1,0.3,1);
+        }
+        .skill-fill::after {
+            content: ""; position: absolute; top: 0; right: 0; width: 40px; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6));
+            animation: shimmer 2.6s infinite;
+        }
+        @keyframes shimmer { 0% { transform: translateX(-60px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateX(0); opacity: 0; } }
+
+        /* ---------- PROJECT CARD ---------- */
+        .project-link { display: block; text-decoration: none; color: inherit; cursor: pointer; width: 100%; }
+        .project-link:hover .proj-img { filter: grayscale(0); transform: scale(1.05); }
+        .project-link:hover .proj-arrow { transform: translateX(6px); color: var(--cyan); }
+        .proj-img { filter: grayscale(1); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+
+        /* ---------- CONTACT BUTTON ---------- */
+        .contact-btn {
+            background: var(--cyan); color: var(--deep);
+            font-family: 'Syncopate', sans-serif; font-size: 11px; font-weight: 700;
+            padding: 18px 32px; border-radius: 10px; transition: all 0.4s;
+            letter-spacing: 2px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+            border: 1px solid var(--cyan); cursor: pointer;
+        }
+        .contact-btn:hover {
+            background: transparent; color: var(--cyan);
+            box-shadow: 0 0 25px rgba(0,242,255,0.6); transform: translateY(-3px);
+        }
+
+        .main-logo { filter: drop-shadow(0 0 22px rgba(0,242,255,0.35)); max-width: 620px; }
+        .nav-logo { filter: drop-shadow(0 0 12px rgba(0,242,255,0.35)); object-fit: contain; }
+
+        /* ---------- SCROLL PROGRESS ---------- */
+        #scrollbar-progress {
+            position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 9999;
+            background: linear-gradient(90deg, var(--violet), var(--cyan));
+            box-shadow: 0 0 12px var(--cyan);
+        }
+
+        /* ---------- LOADER ---------- */
+        #loader {
+            position: fixed; inset: 0; background: var(--deep); z-index: 10000;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace; transition: opacity 0.6s ease;
+        }
+        #loader .load-bar { width: 240px; height: 3px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+        #loader .load-fill { height: 100%; width: 0; background: var(--cyan); box-shadow: 0 0 15px var(--cyan); }
+
+        /* ---------- TYPEWRITER CARET ---------- */
+        .caret::after { content: "▋"; color: var(--cyan); animation: blink 1s step-end infinite; margin-left: 2px; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #05080f; }
+        ::-webkit-scrollbar-thumb { background: #14202e; border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyanx/30 selection:text-cyanx">
+
+    <!-- ================= LOADER ================= -->
+    <div id="loader" role="status" aria-live="polite">
+        <div class="text-cyan-500 mb-6 font-bold tracking-[0.5em] uppercase text-xs animate-pulse" id="loader-text">Establishing_API_Link...</div>
+        <div class="load-bar"><div class="load-fill" id="load-fill"></div></div>
+        <div class="text-gray-600 text-[9px] tracking-[0.4em] uppercase mt-4" id="load-percent">0%</div>
+    </div>
+
+    <!-- ================= BACKGROUND ================= -->
+    <div class="bg-mesh" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="radar" aria-hidden="true"></div>
+    <div class="scanbeam" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div id="scrollbar-progress" aria-hidden="true"></div>
+
+    <!-- ================= NAV ================= -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-xl bg-deep/60" aria-label="Primary">
+        <div class="max-w-[1700px] mx-auto px-6 md:px-12 lg:px-24 py-4 flex items-center justify-between">
+            <a href="#home" class="flex items-center" aria-label="BI6DIGITAL home">
+                <img src="assets/logo-mini.png" alt="BI6DIGITAL logo" class="nav-logo h-8 md:h-9 w-auto" width="160" height="36" onerror="window.logoFallback(this)">
+            </a>
+
+            <div class="hidden lg:flex items-center gap-8 font-mono text-[10px] uppercase tracking-[0.25em] text-gray-500">
+                <a href="#about" class="hover:text-cyanx transition">About</a>
+                <a href="#stack" class="hover:text-cyanx transition">Stack</a>
+                <a href="#work" class="hover:text-cyanx transition">Work</a>
+                <a href="#services" class="hover:text-cyanx transition">Services</a>
+                <a href="#contact" class="hover:text-cyanx transition">Uplink</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full glass-tag">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399] animate-pulse"></span>
+                    <span class="font-mono text-[9px] tracking-[0.2em] uppercase text-emerald-400">System_Online</span>
+                </div>
+                <div id="clock" class="font-mono text-[9px] text-gray-500 tracking-[0.15em] hidden md:block">--:--:--</div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 px-6 md:px-12 lg:px-24 max-w-[1700px] mx-auto pb-40">
+
+        <!-- ================= HERO ================= -->
+        <header id="home" class="min-h-[80vh] mb-32 flex flex-col items-center justify-center text-center relative" data-aos="fade-up">
+            <div class="font-mono text-[10px] text-cyan-500/70 tracking-[0.5em] uppercase mb-8">// SYSTEM_ONLINE :: 2026</div>
+
+            <div class="corner-bracket px-6 py-8 mb-12 w-full flex justify-center">
+                <img src="assets/logo.png" alt="BI6DIGITAL logo — Biggie full-stack digital architect branding" class="main-logo w-full md:w-3/4 lg:w-1/2" onerror="window.logoFallback(this)">
+            </div>
+
+            <div class="flex flex-col gap-10 items-center max-w-2xl">
+                <p class="text-gray-400 font-mono text-[11px] uppercase tracking-[0.3em] leading-relaxed">
+                    Digital Architect &amp; Infrastructure Rebel. <br>
+                    <span class="text-cyanx" id="typewriter" data-text="Full-Stack Evolution // Master of HTML, CSS, JS, and React."></span>
+                </p>
+
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="#work" class="px-6 py-3 rounded-lg glass-tag font-sync text-[10px] tracking-[0.3em] text-white hover:border-cyanx/50 hover:text-cyanx transition">View_Archive</a>
+                    <a href="#contact" class="px-6 py-3 rounded-lg glass-tag font-sync text-[10px] tracking-[0.3em] text-white hover:border-cyanx/50 hover:text-cyanx transition">Open_Uplink</a>
+                    <div class="px-4 py-3 border border-cyan-500/20 bg-cyan-500/[0.04] rounded-lg text-[10px] font-mono text-cyan-500 tracking-widest uppercase animate-pulse flex items-center">STREAMING_LIVE</div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[9px] text-gray-600 tracking-[0.4em] uppercase animate-bounce">scroll ↓</div>
+        </header>
+
+        <!-- ================= ABOUT / THE WHY ================= -->
+        <section id="about" class="mb-32 grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
+            <article class="bento-card corner-bracket rounded-[1.5rem] p-10" data-tilt>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="font-sync text-sm text-cyanx uppercase tracking-widest">// ABOUT_ME</h2>
+                    <span class="font-mono text-[9px] text-gray-600 tracking-[0.2em]">FILE_001</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Hello! My name is Biggie and im a highschooler down from National City, California. Im a kid whos facinated in tech and sports as I play football, soccer, baseball, etc. Im energetic, fun, and kind (or i believe i am). But yeah, thats pretty much about me that I have to say for myself!
+                </p>
+                <div class="flex flex-wrap gap-2 mt-8">
+                    <span class="glass-tag rounded-full px-3 py-1 font-mono text-[9px] text-gray-500 uppercase tracking-widest">National_City_CA</span>
+                    <span class="glass-tag rounded-full px-3 py-1 font-mono text-[9px] text-gray-500 uppercase tracking-widest">Athlete</span>
+                    <span class="glass-tag rounded-full px-3 py-1 font-mono text-[9px] text-gray-500 uppercase tracking-widest">Tech_Head</span>
+                </div>
+            </article>
+
+            <article class="bento-card corner-bracket rounded-[1.5rem] p-10" data-tilt>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="font-sync text-sm text-cyanx uppercase tracking-widest">// THE_WHY</h2>
+                    <span class="font-mono text-[9px] text-gray-600 tracking-[0.2em]">FILE_002</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed italic">
+                    "At an early age, i've always had a strong passion for electronics and tech and I've grew to learn that theres definitely alot more possibilities than just "tech". But it really sparked and I grew a passion on coding when I started a small project back in 2024. It then grew... and then grew on me that I found something I wanted to do. So i expanded and started making free, public tools that other can use because I believe I can inspire and motivate others to choose and take their path in life..."
+                </p>
+            </article>
+        </section>
+
+        <!-- ================= TECH STACK ================= -->
+        <section id="stack" class="mb-32" data-aos="fade-up">
+            <div class="flex items-end justify-between mb-10">
+                <h2 class="font-sync text-sm text-cyanx uppercase tracking-[0.5em]">TECH_STACK_MASTERY</h2>
+                <span class="font-mono text-[9px] text-gray-600 tracking-[0.2em] hidden sm:block">CAPABILITY_MATRIX</span>
+            </div>
+            <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+        <!-- ================= PROJECT ARCHIVE ================= -->
+        <section id="work" class="mb-32">
+            <div class="flex items-end justify-between mb-10" data-aos="fade-up">
+                <h2 class="font-sync text-sm text-cyanx uppercase tracking-[0.5em]">PROJECT_ARCHIVE</h2>
+                <span class="font-mono text-[9px] text-gray-600 tracking-[0.2em] hidden sm:block" id="project-count">LOADING_NODES...</span>
+            </div>
+            <div id="project-grid" class="flex flex-col w-full gap-4"></div>
+        </section>
+
+        <!-- ================= SERVICE PLANS ================= -->
+        <section id="services" class="mb-32 flex flex-col items-center" data-aos="fade-up">
+            <div class="flex items-end justify-between mb-10 w-full">
+                <h2 class="font-sync text-sm text-cyanx uppercase tracking-[0.5em]">SERVICE_PLANS</h2>
+                <span class="font-mono text-[9px] text-gray-600 tracking-[0.2em] hidden sm:block">DEPLOYMENT_TIERS</span>
+            </div>
+            <div class="bento-card corner-bracket rounded-[1.5rem] p-4 md:p-8 w-full flex justify-center items-center min-h-[320px]">
+                <img src="assets/pricing.png"
+                     alt="BI6DIGITAL service plans and pricing tiers for web development and software engineering"
+                     loading="lazy"
+                     class="w-full"
+                     style="max-width: 1000px;"
+                     onerror="window.planFallback(this)">
+                <div id="pricing-soon" class="hidden text-center px-6 py-16 max-w-2xl">
+                    <div class="font-mono text-[10px] text-cyan-500 tracking-[0.5em] uppercase mb-6 animate-pulse">// STATUS: PENDING_DEPLOYMENT</div>
+                    <h3 class="font-sync text-xl md:text-3xl uppercase tracking-[0.2em] text-white mb-5 leading-snug">Prices &amp; Services<br>Coming Soon</h3>
+                    <p class="font-mono text-[10px] text-gray-500 uppercase tracking-[0.25em] leading-loose">
+                        Deployment tiers are being finalized.<br>Check back shortly or open a signal to request a quote.
+                    </p>
+                    <div class="mt-8 flex justify-center">
+                        <span class="h-px w-28 bg-gradient-to-r from-transparent via-cyanx to-transparent"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SIGNAL UPLINK ================= -->
+        <section id="contact" class="mb-20" data-aos="fade-up">
+            <h2 class="font-sync text-sm text-cyanx uppercase tracking-[0.5em] mb-10">SIGNAL_UPLINK</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bento-card corner-bracket rounded-2xl p-8 md:p-12 flex flex-col justify-between">
+                    <div>
+                        <span class="font-mono text-[9px] text-gray-600 uppercase mb-4 block tracking-widest">Electronic Mail</span>
+                        <p class="text-lg md:text-xl font-bold mb-8 break-all">andersonbiggie2011@gmail.com</p>
+                    </div>
+                    <a href="mailto:andersonbiggie2011@gmail.com" class="contact-btn uppercase">Open Gmail Draft</a>
+                </div>
+                <div class="bento-card corner-bracket rounded-2xl p-8 md:p-12 flex flex-col justify-between">
+                    <div>
+                        <span class="font-mono text-[9px] text-gray-600 uppercase mb-4 block tracking-widest">Cellular Uplink</span>
+                        <p class="text-lg md:text-xl font-bold mb-8">+1 619-806-3504</p>
+                    </div>
+                    <a href="tel:+16198063504" class="contact-btn uppercase">Call / Text Now</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="pt-10 border-t border-white/5 flex flex-col items-center gap-8">
+            <button id="hidden-archive-btn" type="button" aria-expanded="false" aria-controls="hidden-archive"
+                    class="group font-mono text-[9px] tracking-[0.4em] uppercase text-gray-600 hover:text-cyan-500 transition flex items-center gap-3 cursor-pointer">
+                <span class="w-1.5 h-1.5 rounded-full bg-gray-700 group-hover:bg-cyan-500 group-hover:shadow-[0_0_10px_#00f2ff] transition"></span>
+                <span data-label>Hidden_Archive</span>
+                <span class="text-gray-700 group-hover:text-cyan-500/70 transition">[<span id="hidden-count">0</span>]</span>
+            </button>
+
+            <div id="hidden-archive" class="hidden w-full">
+                <div class="font-mono text-[9px] text-cyan-500/70 tracking-[0.4em] uppercase mb-6 text-center">// RESTRICTED_ARCHIVE :: DECLASSIFIED</div>
+                <div id="hidden-grid" class="flex flex-col w-full gap-4"></div>
+            </div>
+        </div>
+
+        <footer class="pt-10 mt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[9px] text-gray-600 tracking-[0.2em] uppercase">
+            <div>© 2026 BI6DIGITAL // ALL_SYSTEMS_NOMINAL</div>
+            <div class="text-cyan-500/70">print("Hello, World!")</div>
+        </footer>
+
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        /* ================= DATA (retained from original) ================= */
+        const mySkills = [
+            { name: "HTML", percent: 100 },
+            { name: "CSS", percent: 75 },
+            { name: "JavaScript", percent: 50 },
+            { name: "React", percent: 25 }
+        ];
+
+        const myProjects = [
+            {
+                title: "American Development ",
+                origin: "One of my friends dad needed a lending hand for his company site so for a super cheap discount, I revamped his entire website and helped him setup a .com domain registered to his name. It was super interesting to do and it was a learning curve for me as this is the first time I really stepped up and setup a domain. Not just that but it was also my first legit website sale which I was super proud of.",
+                category: "Services",
+                tags: ["Construction", "Advertising"],
+                image: "thumbnails/adsd.png",
+                link: "https://americandevelopmentsd.com/"
+            },
+            {
+                title: "Red Devil Exterior ",
+                origin: "",
+                category: "Services",
+                tags: ["Landing Page", "Window Washing"],
+                image: "thumbnails/rde.png",
+                link: "https://red-devil-exterior.pages.dev/"
+            },
+            {
+                title: "ResourceIndex",
+                origin: "This was my first AP Computer Science Principles project. It was super fun to build and im super proud of it. The project idea was to build a simple, minimal site with the requirements of atleast 3 working pages, and button elements. We were supposed to do this in Code.org which was similar to building block features from Scratch.Mit.Edu but this was too simple. I saw this as another open opportunity to craft a full project to add to my portfolio. So I went above and beyond to craft a site where you can quite literally search any resoure/material on earth. This project took me 4 hours a day for 3 weeks straight and you can try out my site below!.",
+                category: "Wiki",
+                tags: ["Research", "Information", "Project"],
+                image: "thumbnails/resourceindex.png",
+                link: "https://resourceindex.pages.dev/"
+            },
+            {
+                title: "DetailBroski",
+                origin: "Similar to ReflectionDetailingSD, i sold this business a site aswell, this was also another proud deal of mines.",
+                category: "Service",
+                tags: ["Business", "Car Detailing", "Demo Page"],
+                image: "thumbnails/detailbroski.png",
+                link: "https://detailbroski-demo.pages.dev/"
+            },
+            {
+                title: "REFL. DETAIL SD",
+                origin: "I decided to offer a website to a car detailing service called ReflectionDetailingSD for a low price. They gladly offered and I built them a small demo for them to try, they ended up liking it and it got sold. These were one of my more prouder deals. Check out the link to the demo of their site!.",
+                category: "Service",
+                tags: ["Business", "Car Detailing", "Demo Page"],
+                image: "thumbnails/reflectiondetailing.png",
+                link: "https://refelctiondetailingsd-demo.pages.dev/"
+            },
+            {
+                title: "PrepSet AI",
+                origin: "Originally saw students with very minimum career path resources and very short understanding of how they wanna get to where they wanna be. So i created the best possible college prep tool for students who were struggling to find their path.",
+                category: "Education",
+                tags: ["HTML", "College Related", "Vercel"],
+                image: "thumbnails/prepset.png",
+                link: "https://prep-set-web.pages.dev/"
+            },
+        ];
+
+        const hiddenProjects = [
+            {
+                title: "Seedfinch OS",
+                origin: "We worked on a 9th grade end of year Biology project about biomimicry and my team/groups topic was afforestation. So we designed a robotic finch that plants tree seeds called the SeedFinch. I built a simulated software for it that you can also view below to control your own Seedfinch!",
+                category: "Educational",
+                tags: ["Simulation", "Project", "Robotics"],
+                image: "thumbnails/seedfinch.png",
+                link: "https://seedfinch-sim.pages.dev"
+            },
+            {
+                title: "Moonlight Hub",
+                origin: "One of thee best unblocked game sites known to man. It started after I got my last site got blocked by the district and I got hugely in trouble with one of my features getting out of hand. This meant i had to come back bigger and better...",
+                category: "Entertainment",
+                tags: ["Bypass", "Games", "Vercel"],
+                image: "thumbnails/moonlight.png",
+                link: "https://moonlight-hub.pages.dev"
+            },
+            {
+                title: "BI6ZONE",
+                origin: "This is what sparked my interest and my journey to code. This started back in 2024 and reached all the ways to early 2026. This is a ended project now as I do not work on it anymore since this is the site that I got in trouble for from a feature and is now archived.",
+                category: "Legacy Project",
+                tags: ["Hall Of Fame", "Stealth"],
+                image: "thumbnails/bi6zone.png",
+                link: "https://bi6zone-legacy.vercel.app"
+            },
+            {
+                title: "All In One Hack Tool",
+                origin: "I am super huge on cybersecurity and linux operating systems due to the capabilities it can hold within its software. So i decided to build a quick downloadable tool that easily imports a massive, diverse library of exploits.",
+                category: "Cybersecurity",
+                tags: ["Exploits", "Hacks", "Breakthroughs"],
+                image: "thumbnails/aiohacktool.png",
+                link: "https://github.com/BI66IE619/AIO-Hak-Tool"
+            },
+            {
+                title: "Unblocked GC Hub",
+                origin: "This was another old variation of my original Unblocked Games site BI6ZONE that I was experimenting with to see how well i can make a secret replica of google classroom 1:1 with all games, apps, etc. working. But since then, this project has been archived and most games and apps arent working anymore as this hasnt been worked on in a year and a half",
+                category: "Entertainment",
+                tags: ["Hub", "Unblocked", "Secret"],
+                image: "thumbnails/gchub.png",
+                link: "https://gc-hub-d82.pages.dev/"
+            }
+        ];
+
+        /* ================= RENDER SKILLS ================= */
+        function renderSkills() {
+            const skillsGrid = document.getElementById("skills-grid");
+            skillsGrid.innerHTML = mySkills.map((s, i) => `
+                <div class="bento-card corner-bracket rounded-xl p-6" data-aos="fade-up" data-aos-delay="${i * 100}" data-tilt>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-gray-400">${s.name}</span>
+                        <span class="font-mono text-[10px] text-cyan-500"><span class="skill-num" data-target="${s.percent}">0</span>%</span>
+                    </div>
+                    <div class="skill-track">
+                        <div class="skill-fill" data-percent="${s.percent}"></div>
+                    </div>
+                    <div class="flex justify-between mt-3">
+                        <span class="font-mono text-[8px] text-gray-600 tracking-[0.2em] uppercase">PROFICIENCY</span>
+                        <span class="font-mono text-[8px] text-gray-600 tracking-[0.2em] uppercase">SEC_0${i + 1}</span>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        /* ================= RENDER PROJECTS ================= */
+        function projectCardHTML(p, i) {
+            const num = String(i + 1).padStart(2, "0");
+            const imgSrc = p.image ? p.image : svgPlaceholder(p.title.trim(), 640, 400);
+            const originBlock = p.origin
+                ? `<p class="text-gray-500 text-[11px] italic leading-relaxed font-light">"${p.origin}"</p>`
+                : `<p class="text-gray-700 text-[11px] italic leading-relaxed font-light tracking-widest uppercase">// ORIGIN_DATA_ENCRYPTED</p>`;
+            return `
+                <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-link" data-aos="fade-up">
+                    <div class="bento-card corner-bracket rounded-[1.5rem] p-6 md:p-8 lg:px-12">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/4 w-full md:border-r border-white/10 md:pr-10 pb-6 md:pb-0 border-b md:border-b-0 border-white/10">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-[8px] font-mono text-cyan-500 tracking-[0.4em] uppercase opacity-70 font-bold">Origin_Log</span>
+                                    <span class="text-[8px] font-mono text-gray-600 tracking-[0.2em]">#${num}</span>
+                                </div>
+                                ${originBlock}
+                            </div>
+                            <div class="flex-1 flex flex-col md:flex-row justify-between items-center gap-8 w-full">
+                                <div class="flex-1 w-full">
+                                    <span class="text-[8px] text-cyan-500/80 bg-cyan-500/[0.06] px-3 py-1 rounded uppercase mb-4 inline-block font-mono border border-cyan-500/20 tracking-[0.2em]">${p.category}</span>
+                                    <h3 class="font-sync text-xl md:text-3xl mb-4 tracking-tighter uppercase leading-none text-white">${p.title}</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        ${p.tags.map(t => `<span class="text-[8px] border border-gray-800 px-4 py-1.5 rounded-full text-gray-500 font-bold tracking-[0.1em] uppercase">${t}</span>`).join("")}
+                                    </div>
+                                    <div class="mt-6 font-mono text-[9px] text-gray-500 tracking-[0.25em] uppercase flex items-center gap-2">
+                                        ACCESS_NODE <span class="proj-arrow transition-all duration-300 text-gray-600">→</span>
+                                    </div>
+                                </div>
+                                <div class="shrink-0 w-full md:w-auto">
+                                    <div class="relative overflow-hidden rounded-[1.2rem] border border-white/5 shadow-2xl">
+                                        <img src="${imgSrc}" data-title="${p.title.trim()}" onerror="window.projectImgFallback(this)" alt="${p.title.trim()} project preview" loading="lazy" class="proj-img w-full md:w-64 h-40 md:h-40 object-cover opacity-80">
+                                        <div class="absolute top-2 left-2 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#00f2ff] animate-pulse"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>`;
+        }
+
+        function renderProjects() {
+            document.getElementById("project-grid").innerHTML = myProjects.map(projectCardHTML).join("");
+
+            const hiddenGrid = document.getElementById("hidden-grid");
+            if (hiddenGrid) hiddenGrid.innerHTML = hiddenProjects.map(projectCardHTML).join("");
+
+            const counter = document.getElementById("project-count");
+            if (counter) counter.textContent = `${myProjects.length}_NODES_INDEXED`;
+
+            const hiddenCount = document.getElementById("hidden-count");
+            if (hiddenCount) hiddenCount.textContent = hiddenProjects.length;
+        }
+
+        function initHiddenArchive() {
+            const btn = document.getElementById("hidden-archive-btn");
+            const panel = document.getElementById("hidden-archive");
+            if (!btn || !panel) return;
+            btn.addEventListener("click", () => {
+                const nowHidden = panel.classList.toggle("hidden");
+                btn.setAttribute("aria-expanded", String(!nowHidden));
+                btn.querySelector("[data-label]").textContent = nowHidden ? "Hidden_Archive" : "Close_Archive";
+                if (!nowHidden) {
+                    requestAnimationFrame(() => {
+                        panel.querySelectorAll("[data-aos]").forEach(el => el.classList.add("aos-animate"));
+                        if (window.AOS) AOS.refresh();
+                    });
+                }
+            });
+        }
+
+        /* ================= CLOCK ================= */
+        function startClock() {
+            const el = document.getElementById("clock");
+            const tick = () => {
+                const now = new Date();
+                el.textContent = now.toLocaleTimeString("en-US", { hour12: false });
+            };
+            tick();
+            setInterval(tick, 1000);
+        }
+
+        /* ================= TYPEWRITER ================= */
+        function typewriter() {
+            const el = document.getElementById("typewriter");
+            const text = el.getAttribute("data-text");
+            el.classList.add("caret");
+            let i = 0;
+            const step = () => {
+                if (i <= text.length) {
+                    el.textContent = text.slice(0, i);
+                    i++;
+                    setTimeout(step, 35);
+                }
+            };
+            step();
+        }
+
+        /* ================= SKILL ANIMATION ON SCROLL ================= */
+        function animateSkillNumbers() {
+            document.querySelectorAll(".skill-num").forEach(node => {
+                const target = parseInt(node.getAttribute("data-target"), 10);
+                let val = 0;
+                const inc = Math.max(1, Math.round(target / 40));
+                const iv = setInterval(() => {
+                    val += inc;
+                    if (val >= target) { val = target; clearInterval(iv); }
+                    node.textContent = val;
+                }, 30);
+            });
+        }
+
+        function activateSkillBars() {
+            document.querySelectorAll(".skill-fill").forEach(fill => {
+                fill.style.width = fill.getAttribute("data-percent") + "%";
+            });
+            animateSkillNumbers();
+        }
+
+        function observeSkills() {
+            const section = document.getElementById("stack");
+            if (!section) return;
+            const obs = new IntersectionObserver((entries, o) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        activateSkillBars();
+                        o.disconnect();
+                    }
+                });
+            }, { threshold: 0.35 });
+            obs.observe(section);
+        }
+
+        /* ================= SCROLL PROGRESS ================= */
+        function scrollProgress() {
+            const bar = document.getElementById("scrollbar-progress");
+            window.addEventListener("scroll", () => {
+                const h = document.documentElement.scrollHeight - window.innerHeight;
+                bar.style.width = (window.scrollY / h) * 100 + "%";
+            }, { passive: true });
+        }
+
+        /* ================= CARD CURSOR GLOW + TILT ================= */
+        function initCardGlow() {
+            document.querySelectorAll(".bento-card").forEach(card => {
+                card.addEventListener("mousemove", (e) => {
+                    const r = card.getBoundingClientRect();
+                    card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+                    card.style.setProperty("--my", (e.clientY - r.top) + "px");
+                });
+            });
+        }
+
+        /* ================= BOOT ================= */
+        window.onload = () => {
+            renderSkills();
+            renderProjects();
+            initHiddenArchive();
+            startClock();
+            scrollProgress();
+
+            const loader = document.getElementById("loader");
+            const fill = document.getElementById("load-fill");
+            const pct = document.getElementById("load-percent");
+            const label = document.getElementById("loader-text");
+            const steps = ["Establishing_API_Link...", "Decrypting_Identity...", "Mounting_Archive...", "SYSTEM_ONLINE"];
+            let progress = 0, phase = 0;
+
+            const iv = setInterval(() => {
+                progress += Math.random() * 22;
+                if (progress > 100) progress = 100;
+                fill.style.width = progress + "%";
+                pct.textContent = Math.floor(progress) + "%";
+                if (progress >= (phase + 1) * 25 && phase < steps.length - 1) {
+                    phase++;
+                    label.textContent = steps[phase];
+                }
+                if (progress >= 100) {
+                    clearInterval(iv);
+                    setTimeout(() => {
+                        loader.style.opacity = "0";
+                        setTimeout(() => {
+                            loader.style.display = "none";
+                            initCardGlow();
+                            observeSkills();
+                            AOS.init({ duration: 900, once: true, offset: 60 });
+                            typewriter();
+                        }, 600);
+                    }, 400);
+                }
+            }, 180);
+        };
+    </script>
+</body>
+</html>
